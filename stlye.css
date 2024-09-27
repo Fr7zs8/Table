@@ -14,7 +14,6 @@ table tbody tr:hover{
     background-color: lightpink;
 }
 
-
 tbody tr:nth-child(2n){
     background-color: lightsalmon;
 }
