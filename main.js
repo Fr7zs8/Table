@@ -45,6 +45,15 @@ table.appendChild(tablebody);
 
 for(const person of array){
     const tr = document.createElement('tr')
+    tr.addEventListener('click', function(e){
+        const SelectedRow = tablebody.querySelector('.selected');
+        e.currentTarget.classList.add('selected');
+        if(SelectedRow  != undefined){
+            SelectedRow.classList.remove('selected');
+        }
+
+        console.log('click');
+    })
 
     const td = document.createElement('td');
     td.innerHTML = person.lastname;
@@ -65,11 +74,9 @@ for(const person of array){
     }
 
     tablebody.appendChild(tr);
-    
-   
-
-
 }
+
+
 
 
 
