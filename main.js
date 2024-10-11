@@ -120,18 +120,22 @@ form.addEventListener('submit', function(e){
 
     const lastnameValue = lastname.value;
     const firstname1Value= firstname1.value;
-    let firstname2Value = firstname2.value;
+    const firstname2Value = firstname2.value;
     const marriedValue = married.checked;
     const petValue = pet.value;
 
+    
+
+/*
     if(firstname2Value === ''){
         firstname2Value = undefined; 
     }
+        */
 
     array.push({
         lastname: lastnameValue,
         firstname1: firstname1Value,
-        firstname2: firstname2Value,
+        firstname2: firstname2Value === ''?undefined:firstname2Value,
         married: marriedValue,
         pet: petValue,
     })
