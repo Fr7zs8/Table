@@ -110,7 +110,7 @@ function RenderTable(){
 
 const form = document.getElementById("form");
 form.addEventListener('submit', function(e){
-    tablebody.innerHTML= '';
+   
     e.preventDefault();
     const lastname = document.getElementById("lastname");
     const firstname1 = document.getElementById("firstname1");
@@ -123,27 +123,60 @@ form.addEventListener('submit', function(e){
     const firstname2Value = firstname2.value;
     const marriedValue = married.checked;
     const petValue = pet.value;
-
     
 
-/*
-    if(firstname2Value === ''){
-        firstname2Value = undefined; 
-    }
+    if(Validatefields(lastname, firstname1, pet)){
+        array.push({
+            lastname: lastnameValue,
+            firstname1: firstname1Value,
+            firstname2: firstname2Value === ''?undefined:firstname2Value,
+            married: marriedValue,
+            pet: petValue,
+        })
+
+        tablebody.innerHTML= '';
+        /*
+        if(firstname2Value === ''){
+            firstname2Value = undefined; 
+        }
         */
-
-    array.push({
-        lastname: lastnameValue,
-        firstname1: firstname1Value,
-        firstname2: firstname2Value === ''?undefined:firstname2Value,
-        married: marriedValue,
-        pet: petValue,
-    })
-
-    console.log(array);
-    RenderTable();
-
+    
+        console.log(array);
+        RenderTable();
+    };
 })
+
+function Validatefields(lastnameValidate, firstname1Validate, petValidate){
+
+    let result = true;
+
+    const errorMesssages = form.querySelectorAll(".error");
+   for (const error of errorMesssages){
+        error.innerHTML = '';
+   }
+    
+    if(lastnameValidate.value === ''){
+         const error = lastnameValidate.parentElement.querySelector(".error");
+         error.innerHTML ='Vezetéknév kötelező!';
+         result = false;
+    }
+    if(firstname1Validate.value === ''){
+        const error = firstname1Validate.parentElement.querySelector(".error");
+        error.innerHTML ='Keresztnév kötelező!';
+        result = false;
+   }
+   if(petValidate.value === ''){
+    const error = petValidate.parentElement.querySelector(".error");
+    error.innerHTML ='Állat kötelező!';
+    result = false;
+   }
+    
+   
+
+    return result;
+}
+    
+
 
 
 
