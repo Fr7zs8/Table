@@ -32,36 +32,52 @@ const table = document.createElement('table');
 
 document.body.appendChild(table);
 
+
+
 const tableheader = document.createElement('thead');
 table.appendChild(tableheader);
 
 const tableheaderrow = document.createElement('tr');
 tableheader.appendChild(tableheaderrow);
 
+createTableCell("th", "Vezeteknev", tableheaderrow);
+/*
 const tableheaderrowLastname = document.createElement('th');
 tableheaderrowLastname.innerHTML = "Vezeteknev";
 tableheaderrow.appendChild(tableheaderrowLastname);
+*/
 
+const kernev = createTableCell("th", "Keresztnev", tableheaderrow);
+kernev.colSpan = 2;
+/*
 const tableheaderrowFirstName = document.createElement('th');
 tableheaderrowFirstName.innerHTML = "Keresztnev";
 tableheaderrowFirstName.colSpan = 2;
 tableheaderrow.appendChild(tableheaderrowFirstName);
-
+*/
+createTableCell("th", "Házas", tableheaderrow);
+/*
 const tableRowMarried = document.createElement('th');
 tableRowMarried.innerHTML = "Házas";
 tableheaderrow.appendChild(tableRowMarried);
+*/
 
+createTableCell("th", "Állat", tableheaderrow);
+/*
 const tableRowPet = document.createElement('th');
 tableRowPet.innerHTML = "Állat";
 tableheaderrow.appendChild(tableRowPet);
-
+*/
 const tablebody = document.createElement('tbody');
 table.appendChild(tablebody);
 
 RenderTable();
 function RenderTable(){
     for(const person of array){
-        const tr = document.createElement('tr')
+        
+        const tr = document.createElement('tr');
+        tablebody.appendChild(tr);
+
         tr.addEventListener('click', function(e){
             const SelectedRow = tablebody.querySelector('.selected');
             e.currentTarget.classList.add('selected');
@@ -104,7 +120,7 @@ function RenderTable(){
         allat.innerHTML = person.pet;
         tr.appendChild(allat);
     
-        tablebody.appendChild(tr);
+        
     }
 }
 
@@ -175,8 +191,20 @@ function Validatefields(lastnameValidate, firstname1Validate, petValidate){
 
     return result;
 }
-    
+/**
+ * Adtunk változokat, hogy a vscode segitsen
+ * @param {'td'|'th'} tagname 
+ * @param {string} innerHTML 
+ * @param {HTMLTableRowElement} parent 
+ * @returns {HTMLTableCellElement} 
+ */
+function createTableCell(tagname, innerHTML, parent){
 
+    const element = document.createElement(tagname);
+    element.innerHTML(innerHTML);
+    parent.appendChild(element);
+    return element;
+}
 
 
 
