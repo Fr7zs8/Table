@@ -87,23 +87,33 @@ function RenderTable(){
     
             console.log('click');
         })
-    
+        
+        createTableCell("td", person.lastname, tr)
+        /*
         const td = document.createElement('td');
         td.innerHTML = person.lastname;
         tr.appendChild(td);
-    
+        */
+
+        const firstname1td = createTableCell("td", person.firstname1, tr);
+        /*
         const firstname1td = document.createElement('td');
         firstname1td.innerHTML = person.firstname1;
         tr.appendChild(firstname1td);
-    
+    */
+
         if(person.firstname2 === undefined){
             firstname1td.colSpan = 2;
     
         }
         else{
+
+            createTableCell("td", person.firstname2, tr);
+            /*
             const firstname2td = document.createElement('td');
             firstname2td.innerHTML = person.firstname2;
             tr.appendChild(firstname2td);
+            */
         }
     
         const married = document.createElement('td');
@@ -116,10 +126,12 @@ function RenderTable(){
         }
         tr.appendChild(married)
         
+        createTableCell("td", person.pet, tr);
+        /*
         const allat = document.createElement('td');
         allat.innerHTML = person.pet;
         tr.appendChild(allat);
-    
+    */
         
     }
 }
