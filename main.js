@@ -201,7 +201,7 @@ function Validatefields(lastnameValidate, firstname1Validate, petValidate){
 function createTableCell(tagname, innerHTML, parent){
 
     const element = document.createElement(tagname);
-    element.innerHTML(innerHTML);
+    element.innerHTML = innerHTML;
     parent.appendChild(element);
     return element;
 }
