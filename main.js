@@ -116,15 +116,19 @@ function RenderTable(){
             */
         }
     
-        const married = document.createElement('td');
+        const married = createTableCell("td", person.married, tr);
+
+        //const married = document.createElement('td');
         //married.innerHtml?"igen":"nem"
+        
         if(person.married === true){
             married.innerHTML = "igen";
         }
         else{
             married.innerHTML = "nem";
         }
-        tr.appendChild(married)
+        //tr.appendChild(married)
+        
         
         createTableCell("td", person.pet, tr);
         /*
