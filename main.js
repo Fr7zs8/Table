@@ -34,49 +34,7 @@ createHtmlElementWithParentId("tr", "tableheaderrow", "tableheader")
 RenderTableHeader();
 createHtmlElementWithParentId("tbody", "tablebody", "personTable")
 
-RenderTable();
-function RenderTable(){
-    for(const person of array){
-        
-        const tr = document.createElement('tr');
-        tablebody.appendChild(tr);
-
-        tr.addEventListener('click', function(e){
-            const SelectedRow = tablebody.querySelector('.selected');
-            e.currentTarget.classList.add('selected');
-            if(SelectedRow  != undefined){
-                SelectedRow.classList.remove('selected');
-            }
-    
-            console.log('click');
-        })
-        
-        createTableCell("td", person.lastname, tr)
-
-        const firstname1td = createTableCell("td", person.firstname1, tr);
-
-        if(person.firstname2 === undefined){
-            firstname1td.colSpan = 2;
-    
-        }
-        else{
-
-            createTableCell("td", person.firstname2, tr);
-        }
-    
-        const married = createTableCell("td", person.married, tr);
-        
-        if(person.married === true){
-            married.innerHTML = "igen";
-        }
-        else{
-            married.innerHTML = "nem";
-        }
-
-        createTableCell("td", person.pet, tr);
-        
-    }
-}
+RenderTable(array);
 
 const form = document.getElementById("form");
 form.addEventListener('submit', function(e){
@@ -104,9 +62,10 @@ form.addEventListener('submit', function(e){
             pet: petValue,
         })
 
+        const tablebody = document.getElementById("tablebody");
         tablebody.innerHTML= '';
         console.log(array);
-        RenderTable();
+        RenderTable(array);
     };
 
     form.reset();
