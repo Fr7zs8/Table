@@ -28,48 +28,11 @@ let array = [
     },
 ]
 
-const table = document.createElement('table');
-
-document.body.appendChild(table);
-
-
-
-const tableheader = document.createElement('thead');
-table.appendChild(tableheader);
-
-const tableheaderrow = document.createElement('tr');
-tableheader.appendChild(tableheaderrow);
-
-createTableCell("th", "Vezeteknev", tableheaderrow);
-/*
-const tableheaderrowLastname = document.createElement('th');
-tableheaderrowLastname.innerHTML = "Vezeteknev";
-tableheaderrow.appendChild(tableheaderrowLastname);
-*/
-
-const kernev = createTableCell("th", "Keresztnev", tableheaderrow);
-kernev.colSpan = 2;
-/*
-const tableheaderrowFirstName = document.createElement('th');
-tableheaderrowFirstName.innerHTML = "Keresztnev";
-tableheaderrowFirstName.colSpan = 2;
-tableheaderrow.appendChild(tableheaderrowFirstName);
-*/
-createTableCell("th", "Házas", tableheaderrow);
-/*
-const tableRowMarried = document.createElement('th');
-tableRowMarried.innerHTML = "Házas";
-tableheaderrow.appendChild(tableRowMarried);
-*/
-
-createTableCell("th", "Állat", tableheaderrow);
-/*
-const tableRowPet = document.createElement('th');
-tableRowPet.innerHTML = "Állat";
-tableheaderrow.appendChild(tableRowPet);
-*/
-const tablebody = document.createElement('tbody');
-table.appendChild(tablebody);
+createHtmlElement("table", "personTable", document.body);
+createHtmlElementWithParentId("thead", "tableheader", "personTable" );
+createHtmlElementWithParentId("tr", "tableheaderrow", "tableheader")
+RenderTableHeader();
+createHtmlElementWithParentId("tbody", "tablebody", "personTable")
 
 RenderTable();
 function RenderTable(){
@@ -89,18 +52,8 @@ function RenderTable(){
         })
         
         createTableCell("td", person.lastname, tr)
-        /*
-        const td = document.createElement('td');
-        td.innerHTML = person.lastname;
-        tr.appendChild(td);
-        */
 
         const firstname1td = createTableCell("td", person.firstname1, tr);
-        /*
-        const firstname1td = document.createElement('td');
-        firstname1td.innerHTML = person.firstname1;
-        tr.appendChild(firstname1td);
-    */
 
         if(person.firstname2 === undefined){
             firstname1td.colSpan = 2;
@@ -109,17 +62,9 @@ function RenderTable(){
         else{
 
             createTableCell("td", person.firstname2, tr);
-            /*
-            const firstname2td = document.createElement('td');
-            firstname2td.innerHTML = person.firstname2;
-            tr.appendChild(firstname2td);
-            */
         }
     
         const married = createTableCell("td", person.married, tr);
-
-        //const married = document.createElement('td');
-        //married.innerHtml?"igen":"nem"
         
         if(person.married === true){
             married.innerHTML = "igen";
@@ -127,15 +72,8 @@ function RenderTable(){
         else{
             married.innerHTML = "nem";
         }
-        //tr.appendChild(married)
-        
-        
+
         createTableCell("td", person.pet, tr);
-        /*
-        const allat = document.createElement('td');
-        allat.innerHTML = person.pet;
-        tr.appendChild(allat);
-    */
         
     }
 }
@@ -167,12 +105,6 @@ form.addEventListener('submit', function(e){
         })
 
         tablebody.innerHTML= '';
-        /*
-        if(firstname2Value === ''){
-            firstname2Value = undefined; 
-        }
-        */
-    
         console.log(array);
         RenderTable();
     };
@@ -204,25 +136,11 @@ function Validatefields(lastnameValidate, firstname1Validate, petValidate){
     error.innerHTML ='Állat kötelező!';
     result = false;
    }
-    
-   
 
     return result;
 }
-/**
- * Adtunk változokat, hogy a vscode segitsen
- * @param {'td'|'th'} tagname 
- * @param {string} innerHTML 
- * @param {HTMLTableRowElement} parent 
- * @returns {HTMLTableCellElement} 
- */
-function createTableCell(tagname, innerHTML, parent){
 
-    const element = document.createElement(tagname);
-    element.innerHTML = innerHTML;
-    parent.appendChild(element);
-    return element;
-}
+
 
 
 
