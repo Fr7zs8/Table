@@ -176,6 +176,8 @@ form.addEventListener('submit', function(e){
         console.log(array);
         RenderTable();
     };
+
+    form.reset();
 })
 
 function Validatefields(lastnameValidate, firstname1Validate, petValidate){
