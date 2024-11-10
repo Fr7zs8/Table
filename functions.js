@@ -101,3 +101,39 @@ function RenderTable(personarray){
         
     }
 }
+/**
+ * Ez a függvény megnézi valahova nem e írt üres mezőt a felhasználó és azt ellenőrzi. 
+ * @param {HTMLElement} lastnameValidate 
+ * @param {HTMLElement} firstname1Validate 
+ * @param {HTMLElement} petValidate 
+ * @returns {boolean}
+ */
+function Validatefields(lastnameValidate, firstname1Validate, petValidate){
+
+    let result = true;
+
+    const errorMesssages = form.querySelectorAll(".error");
+   for (const error of errorMesssages){
+        error.innerHTML = '';
+   }
+        result = ValidateElement(lastnameValidate, "Vezetéknév kötelező!");
+        result = ValidateElement(firstname1Validate, 'Keresztnév kötelező!');
+        result = ValidateElement(petValidate, 'Állat kötelező!');
+
+    return result;
+}
+
+/**
+ * Ez a függvény ha talál egy hibát hogy valahová ahova kötelező nincs írva semmi akkor azt a megadott error üzenettel vissza adja
+ * @param {HTMLElement} validateelement 
+ * @param {string} message 
+ * @returns {boolean}
+ */
+function ValidateElement(validateelement, message){
+    if(validateelement.value === ''){
+        const error = validateelement.parentElement.querySelector(".error");
+        error.innerHTML = message;
+        return false;
+    }
+    return true;
+}

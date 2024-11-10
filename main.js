@@ -71,33 +71,7 @@ form.addEventListener('submit', function(e){
     form.reset();
 })
 
-function Validatefields(lastnameValidate, firstname1Validate, petValidate){
 
-    let result = true;
-
-    const errorMesssages = form.querySelectorAll(".error");
-   for (const error of errorMesssages){
-        error.innerHTML = '';
-   }
-    
-    if(lastnameValidate.value === ''){
-         const error = lastnameValidate.parentElement.querySelector(".error");
-         error.innerHTML ='Vezetéknév kötelező!';
-         result = false;
-    }
-    if(firstname1Validate.value === ''){
-        const error = firstname1Validate.parentElement.querySelector(".error");
-        error.innerHTML ='Keresztnév kötelező!';
-        result = false;
-   }
-   if(petValidate.value === ''){
-    const error = petValidate.parentElement.querySelector(".error");
-    error.innerHTML ='Állat kötelező!';
-    result = false;
-   }
-
-    return result;
-}
 
 
 
