@@ -1,5 +1,5 @@
 /**
- * Adtunk változokat, hogy a vscode segitsen // Ez a függvény azt csinálja.
+ * Adtunk változokat, hogy a vscode segitsen // Ez a függvény azt csinálja, hogy létrehoz egy cellát a táblázatunkhoz 
  * @param {'td'|'th'} tagname 
  * @param {string} innerHTML 
  * @param {HTMLTableRowElement} parent 
@@ -13,12 +13,24 @@ function createTableCell(tagname, innerHTML, parent){
     return element;
 }
 
+/**
+ * Ez a függvény azt csinálja, hogy létrehoz egy html elemet és az id-ját is megadhatjuk neki
+ * @param {HTMLTableElement} tag 
+ * @param {string} id 
+ * @param {HTMLElement} parent 
+ */
 function createHtmlElement(tag, id ,parent){
     const element = document.createElement(tag);
     element.id = id;
     parent.appendChild(element);
 }
 
+/**
+ * Ez a függvény azt csinálja, hogy létrehoz egy Html elementet és ahoz az id-ju elemhez csatolja amit megadunk neki.
+ * @param {HTMLTableElement} tag 
+ * @param {string} id 
+ * @param {string} parentid 
+ */
 function createHtmlElementWithParentId(tag, id, parentid){
     const element = document.getElementById(parentid);
     if (element != undefined){ // if(elementid)
@@ -31,6 +43,9 @@ function createHtmlElementWithParentId(tag, id, parentid){
         
 }
 
+/**
+ * Ez a függvény azt csinálja, hogy létrehozza a fejlécet
+ */
 function RenderTableHeader(){
     const element = document.getElementById("tableheaderrow");
     createTableCell("th", "Vezetéknév", element);
@@ -40,6 +55,10 @@ function RenderTableHeader(){
     createTableCell("th", "Állat", element);
 }
 
+/**
+ * Ez a függvény azt csinálja, hogy létrehozza a táblázatunkat az adatokkal amit megadunk neki
+ * @param {Array} personarray 
+ */
 function RenderTable(personarray){
     for(const person of personarray){
         const tablebody = document.getElementById("tablebody");
